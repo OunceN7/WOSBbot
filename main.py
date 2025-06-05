@@ -134,14 +134,7 @@ def show_players(message):
     data = load_data()
     active = [f"- {u['nickname']} ({u['id']}), с {u['joined']}" for u in data if u["status"] == "in"]
     left = [f"- {u['nickname']} ({u['id']}), с {u['joined']}" for u in data if u["status"] == "left"]
-    msg = "✅ В группе:
-" + ("
-".join(active) or "—") + "
-
-❌ Вышли:
-" + ("
-".join(left) or "—")
-    bot.send_message(ADMIN_ID, msg)
+    msg = "✅ В группе:\n" + ("\n".join(active) or "—") + "\n\n❌ Вышли:\n" + ("\n".join(left) or "—")
 
 @bot.message_handler(func=lambda msg: msg.text == "⬅ Назад")
 def go_back(message):
